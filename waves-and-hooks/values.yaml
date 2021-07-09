@@ -1,5 +1,5 @@
 namespace: default
 name: svc1
-port: 8080
+port: 80
 image: "kennethreitz/httpbin"
-delay: 10
+delay: 20
