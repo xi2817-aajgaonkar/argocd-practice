@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: integration-test-
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  ttlSecondsAfterFinished: 30
+  template:
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu:latest
+        command: [ "sleep"]
+        args: [ "{{ .Value.delay }}" ]
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: integration-test-
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  ttlSecondsAfterFinished: 30
+  template:
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu:latest
+        command: [ "sleep"]
+        args: [ "{{ .Value.delay }}" ]
