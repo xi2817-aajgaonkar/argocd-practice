@@ -1,7 +1,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: integration-test-
+  generateName: integration-test1-
+  namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: Sync
     argocd.argoproj.io/sync-wave: "1"
@@ -9,16 +10,18 @@ spec:
   ttlSecondsAfterFinished: 30
   template:
     spec:
+      restartPolicy: Never
       containers:
       - name: ubuntu
         image: ubuntu:latest
         command: [ "sleep"]
-        args: [ "{{ .Value.delay }}" ]
+        args: [ "{{ .Values.delay }}" ]
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: integration-test-
+  generateName: integration-test2-
+  namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: Sync
     argocd.argoproj.io/sync-wave: "2"
@@ -26,8 +29,9 @@ spec:
   ttlSecondsAfterFinished: 30
   template:
     spec:
+      restartPolicy: Never
       containers:
       - name: ubuntu
         image: ubuntu:latest
         command: [ "sleep"]
-        args: [ "{{ .Value.delay }}" ]
+        args: [ "{{ .Values.delay }}" ]
