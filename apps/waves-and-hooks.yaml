@@ -13,7 +13,7 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/xi2424-npanjwani/argocd-practice.git
+    repoURL: https://github.com/xi2817-aajgaonkar/argocd-practice.git
     targetRevision: HEAD
     path: waves-and-hooks
 
