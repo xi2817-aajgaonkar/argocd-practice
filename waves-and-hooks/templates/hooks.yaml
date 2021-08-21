@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/hook: Sync
     argocd.argoproj.io/sync-wave: "1"
 spec:
-  ttlSecondsAfterFinished: 30
+  ttlSecondsAfterFinished: 10
   template:
     spec:
       restartPolicy: Never
@@ -26,7 +26,7 @@ metadata:
     argocd.argoproj.io/hook: Sync
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  ttlSecondsAfterFinished: 30
+  ttlSecondsAfterFinished: 10
   template:
     spec:
       restartPolicy: Never
